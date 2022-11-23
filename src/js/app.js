@@ -1,3 +1,5 @@
+const Web3 = require("web3");
+var web3 = new Web3(window.web3.currentProvider);
 var phaseEnum; // for changing phases of voting
 App = {
   web3Provider: null,
@@ -217,7 +219,7 @@ App = {
     var qualification = $('#qualification').val();
     
     App.contracts.Contest.deployed().then(function(instance){
-      return instance.addContestant(name,party,age,qualification);
+      return instance.addContestant(name,party,age,qualification,{from:web3.eth.accounts[0],  gas: 300000});
     }).then(function(result){
       $("#loader").show();
       $('#name').val('');
@@ -235,7 +237,7 @@ App = {
     phaseEnum ++;
     // console.log(phaseEnum);
     App.contracts.Contest.deployed().then(function(instance){
-      return instance.changeState(phaseEnum);
+      return instance.changeState(phaseEnum,{from:web3.eth.accounts[0],  gas: 300000});
     }).then(function(result){
       $("#content").hide();
       $("#loader").show();
@@ -248,7 +250,7 @@ App = {
   registerVoter: function(){
     var add=$('#accadd').val();
     App.contracts.Contest.deployed().then(function(instance){
-      return instance.voterRegisteration(add);
+      return instance.voterRegisteration(add,{from:web3.eth.accounts[0],  gas: 300000});
     }).then(function(result){
       $("#content").hide();
       $("#loader").show();
