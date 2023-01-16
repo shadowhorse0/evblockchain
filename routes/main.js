@@ -23,8 +23,8 @@ var rand=Math.floor((Math.random() * 10000) + 54);
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'election.blockchain@gmail.com',
-      pass: 'ajkprvy7'
+      user: 'election.blockchain7517@gmail.com',
+      pass: 'samydjpnvynpnzcd'
     }
   });
 
