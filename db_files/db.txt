@@ -1,0 +1,45 @@
+use aadhar;
+show tables;
+select * from registered_users;
+truncate registered_users;
+
+
+CREATE TABLE registration (
+    first_name varchar(255),
+    last_name varchar(255),
+    email_address varchar(255),
+    gender varchar(255),
+    password varchar(255),
+    confirm_password varchar(255)
+);
+select * from registration;
+
+
+
+CREATE TABLE aadhar_info (
+    Name varchar(255),
+    Aadharno varchar(255),
+    Email varchar(255),
+    phoneno varchar(255),
+    Gender varchar(255),
+    Dob date,
+    Is_registered varchar(255)
+);
+truncate aadhar_info;
+select * from aadhar_info;
+
+INSERT INTO aadhar_info (Name, Aadharno, Email, phoneno, Gender, Dob,Is_registered)
+VALUES ('Vaibhav Padghan', '873070909016', 'vaibhav.111padghan@gmail.com', '7517263842', 'M', '2001-12-11','No');
+
+UPDATE aadhar_info SET Is_registered='No' WHERE Aadharno='873070909016';
+select * from aadhar_info;
+SET SQL_SAFE_UPDATES = 0;
+
+
+CREATE TABLE registered_users (
+    Account_address	text,
+    Is_registered varchar(10)
+);
+
+select * from registered_users;
+truncate registered_users;
